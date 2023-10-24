@@ -1,4 +1,4 @@
-package com.project.bookmyshow.models;
+package com.project.bookmyshow.models.constants;
 
 public enum AuditoriumFeature {
     TWO_D,

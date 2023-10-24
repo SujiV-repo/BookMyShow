@@ -1,4 +1,4 @@
-package com.project.bookmyshow.models;
+package com.project.bookmyshow.models.constants;
 
 import jakarta.persistence.*;
 import lombok.Getter;

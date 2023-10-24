@@ -11,9 +11,9 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Theatre extends BaseModel {
+public class User extends BaseModel {
     private String name;
-    private String address;
+    private String email;
     @OneToMany
-    private List<Auditorium> auditoriums;
+    private List<Ticket> tickets;
 }

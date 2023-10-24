@@ -1,5 +1,6 @@
 package com.project.bookmyshow.models;
 
+import com.project.bookmyshow.models.constants.BaseModel;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -12,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Show extends BaseModel{
+public class Show extends BaseModel {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 

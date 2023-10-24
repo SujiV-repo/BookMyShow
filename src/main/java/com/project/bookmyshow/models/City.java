@@ -1,5 +1,6 @@
 package com.project.bookmyshow.models;
 
+import com.project.bookmyshow.models.constants.BaseModel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -10,7 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class City extends BaseModel{
+public class City extends BaseModel {
     @Column(name = "CityName")
     private String name;
     @OneToMany

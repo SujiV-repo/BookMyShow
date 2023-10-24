@@ -1,5 +1,7 @@
 package com.project.bookmyshow.models;
 
+import com.project.bookmyshow.models.constants.BaseModel;
+import com.project.bookmyshow.models.constants.ShowSeatStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -10,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class ShowSeat extends BaseModel{
+public class ShowSeat extends BaseModel {
     private int price;
 
     @ManyToOne
