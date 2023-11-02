@@ -18,18 +18,20 @@ public class TicketServiceImpl implements TicketService{
     private ShowSeatRepository showSeatRepository;
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
-    public Ticket bookTicket(List<Integer> showSeatIds, User user) throws ShowSeatAlreadyBookedException {
+    public Ticket bookTicket(List<Integer> showSeatIds, int userId) throws ShowSeatAlreadyBookedException {
         //checking status of all the seats if available, throwing exception if not available
-        List<ShowSeat> seats = showSeatRepository.findAllById(showSeatIds);
-        for(ShowSeat seat : seats){
+        for(Integer showSeatId : showSeatIds){
+            ShowSeat seat = showSeatRepository.findById(showSeatId).get(); // bulk fetch the showSeats to optimise
             if(!seat.getShowSeatStatus().equals(ShowSeatStatus.AVAILABLE)){
-                throw new ShowSeatAlreadyBookedException("Show Seat is booked already by someone else");
+                throw new ShowSeatAlreadyBookedException("Show Seat is booked by someone else");
             }
         }
-
-        //locking the seats and save into db
-        seats.forEach(seat -> seat.setShowSeatStatus(ShowSeatStatus.LOCKED));
-        showSeatRepository.saveAll(seats);
+        //locked the seats
+        for(Integer showSeatId : showSeatIds){
+            ShowSeat seat = showSeatRepository.findById(showSeatId).get();
+            seat.setShowSeatStatus(ShowSeatStatus.LOCKED);
+            showSeatRepository.save(seat);
+        }
 
         return new Ticket();
     }
