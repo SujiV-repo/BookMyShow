@@ -21,7 +21,7 @@ public class TicketController {
 
     @PostMapping("/ticket")
     public ResponseEntity createTicket(@RequestBody BookTicketRequestDTO bookTicketRequestDTO) throws ShowSeatAlreadyBookedException {
-        Ticket ticket = ticketService.bookTicket(bookTicketRequestDTO.getShowSeatIds(), bookTicketRequestDTO.getUserId());
+        //Ticket ticket = ticketService.bookTicket(bookTicketRequestDTO.getShowSeatIds(), bookTicketRequestDTO.getUserId());
         TicketResponseDTO ticket = new TicketResponseDTO();
         ticket.setAuditoriumName("AUDI 01");
         ticket.setMovieName("SUPER COMMANDO DHRUV");
